@@ -1,0 +1,12 @@
+tools,
+batteries,
+irrigation channel
+cistern
+kitchen
+sleeping quarters
+guest room
+compost toilet
+solar modules
+assembly room 
+storage shed
+

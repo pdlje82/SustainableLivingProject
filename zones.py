@@ -2,8 +2,8 @@ from helper import CortijoObject
 
 class Room(CortijoObject):
     def __init__(self, name):
+        super().__init__()
         self.name = name
-        self._roomCost = {}
         self._roomSize = None
 
     # Create getter and setter functions

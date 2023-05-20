@@ -1,6 +1,6 @@
 # from Buildings import Building
+import structures
 from helper import CortijoObject, GeoPoint
-
 
 
 class Cortijo(CortijoObject):
@@ -15,20 +15,18 @@ class Cortijo(CortijoObject):
         The size of the land in square meters, accessed through the landSize property.
     _location : GeoPoint
         The geographical coordinates of the Cortijo, accessed through the location property.
-    _buildings : list of Building
-        A list of buildings located in the Cortijo, accessed through the buildings property.
+    _children : dict of list
+        A dictionary containing lists of child objects belonging to the Cortijo, accessed through the children property.
+        Currently, the only key-value pair in the dictionary is 'buildings': [], where the value is a list of Building objects.
 
     Methods
     -------
-    add_building(building: Building):
-        Adds a Building object to the list of buildings in the Cortijo.
     """
     def __init__(self):
         super().__init__()
-        self._purchaseCost = None  # in €
         self._landSize = None  # in sqm
         self._location = None  # latitude DD, longitude DD
-        self._buildings = []  # list to store Building objects
+        self.add_child('structures', [])  # list to store Building objects
 
     # Create getter and setter functions
     @property
@@ -57,23 +55,3 @@ class Cortijo(CortijoObject):
             self._location = value
         else:
             raise TypeError("Expected a GeoPoint instance")
-
-    # add and remove objects to and from the cortijo
-    def add_building(self, building):
-        """
-        Adds a Building object to the list of buildings in the Cortijo.
-
-        Parameters
-        ----------
-        building : Building
-            The building to be added to the Cortijo.
-
-        Raises
-        ------
-        TypeError
-            If the building is not an instance of Building.
-        """
-        if isinstance(building, Building):
-            self._buildings.append(building)
-        else:
-            raise TypeError("Expected a Building object.")
