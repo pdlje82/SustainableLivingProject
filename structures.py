@@ -19,28 +19,12 @@ class Building(CortijoObject):
         -------
         no methods other than the ones inherited from CortijoObject
         """
+    VALID_CHILD_TYPES = ["rooms"]
     def __init__(self):
         super().__init__()
         self._houseSize = None
-        self.systems = {'rooms': [],
-                        'heating': [],
-                        'water system': []
-                        }
-        for system in self.systems:
-            self.add_child(system)
 
     # Create getter and setter functions
-    @property
-    def buildingCost(self):
-        return self._buildingCost
-
-    @buildingCost.setter
-    def buildingCost(self, value):
-        # assuming b_type can be of any type
-        if not isinstance(value, dict):
-            raise ValueError('buildingCost must be a of type dict, i.e. {restoration: 1000}')
-        self._buildingCost = value
-
     @property
     def houseSize(self):
         return self._houseSize

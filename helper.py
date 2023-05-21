@@ -23,7 +23,7 @@ class CortijoObject(object):
     display_missing():
         Returns a string with the names of attributes that are None or empty dictionaries or lists.
     """
-
+    VALID_CHILD_TYPES = ["not defined!"]
     def __init__(self):
         self._name = ''  # We use underscore to indicate this should be accessed via getter/setter
         self._children = {}
@@ -55,6 +55,9 @@ class CortijoObject(object):
         If the child_type does not exist yet in the _children dictionary, this method initializes it with an empty list.
         If a child (or list of children) is provided, it appends (or extends) the child object(s) to the list for the specified child_type in the _children dictionary.
         """
+        if child_type not in self.VALID_CHILD_TYPES:
+            raise ValueError(f"{child_type} is not a valid child type")
+
         # If the child type does not exist yet, initialize it with an empty list
         if child_type not in self._children:
             self._children[child_type] = []
@@ -69,18 +72,6 @@ class CortijoObject(object):
                 # Append the single child object to the list for this child_type
                 self._children[child_type].append(child)
 
-    def remove_child(self, child_type, child):
-        """Removes a child of the specified type."""
-        # Check if the child type exists
-        if child_type in self._children:
-            # Check if the child is in the list of children of this type
-            if child in self._children[child_type]:
-                # Remove the child
-                self._children[child_type].remove(child)
-            else:
-                print(f"The specified child does not exist in {child_type}.")
-        else:
-            print(f"The specified child type ({child_type}) does not exist.")
 
     def get_children(self):
         all_children = []

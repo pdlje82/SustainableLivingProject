@@ -15,11 +15,3 @@ class Room(CortijoObject):
     def roomSize(self, value):
         self._roomSize = value
 
-    @property
-    def roomCost(self):
-        return self._roomCost
-
-    @roomCost.setter
-    def roomCost(self, value):
-        self._roomCost = value
-

@@ -46,8 +46,8 @@ class Cost:
 
         while nodes_to_visit:
             current_node = nodes_to_visit.pop()
-            if hasattr(current_node, 'cost'):
-                for cost_type, cost_value in current_node.cost._cost.items():
+            if hasattr(current_node, '_cost'):
+                for cost_type, cost_value in current_node._cost.costs.items():
                     total_costs[cost_type] += cost_value
 
             # Add all children to the list of nodes to visit

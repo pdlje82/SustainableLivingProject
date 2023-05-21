@@ -22,21 +22,13 @@ class Cortijo(CortijoObject):
     Methods
     -------
     """
+    VALID_CHILD_TYPES = ["structures"]
     def __init__(self):
         super().__init__()
         self._landSize = None  # in sqm
         self._location = None  # latitude DD, longitude DD
-        self.add_child('structures', [])  # list to store Building objects
 
     # Create getter and setter functions
-    @property
-    def purchaseCost(self):
-        return self._purchaseCost
-
-    @purchaseCost.setter
-    def purchaseCost(self, value):
-        self._purchaseCost = value
-
     @property
     def landSize(self):
         return self._landSize
