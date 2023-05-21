@@ -23,7 +23,7 @@ class CortijoObject(object):
     display_missing():
         Returns a string with the names of attributes that are None or empty dictionaries or lists.
     """
-    VALID_CHILD_TYPES = ["not defined!"]
+    VALID_CHILD_TYPES = []
     def __init__(self):
         self._name = ''  # We use underscore to indicate this should be accessed via getter/setter
         self._children = {}
@@ -72,15 +72,15 @@ class CortijoObject(object):
                 # Append the single child object to the list for this child_type
                 self._children[child_type].append(child)
 
-
     def get_children(self):
         all_children = []
         for child_type in self._children:
             all_children.extend(self._children[child_type])
         return all_children
 
-    def add_cost(self, cost_type, amount):
-        self._cost.add_cost(cost_type, amount)
+    # uses the Cost() class to add_costs to an object
+    def add_cost(self, cost_type, cost_category, amount):
+        self._cost.add_cost(cost_type, cost_category, amount)
 
     # Display functions
     def display(self):
@@ -167,6 +167,12 @@ class CortijoObject(object):
             return "These values are not set: " + ", ".join(missing_attributes)
         else:
             return "All values are set."
+
+    @classmethod
+    def print_valid_child_types(cls):
+        print("Valid Child Types:\n")
+        for child_type, description in cls.VALID_CHILD_TYPES.items():
+            print(f"{child_type}: {description} \n")
 
 
 class GeoPoint:

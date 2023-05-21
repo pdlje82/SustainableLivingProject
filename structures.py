@@ -34,7 +34,3 @@ class Building(CortijoObject):
         if not isinstance(value, (int, float)):
             raise ValueError('houseSize must be a int or float')
         self._houseSize = value
-
-
-
-

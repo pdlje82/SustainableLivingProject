@@ -22,7 +22,7 @@ class Cortijo(CortijoObject):
     Methods
     -------
     """
-    VALID_CHILD_TYPES = ["structures"]
+    VALID_CHILD_TYPES = ['structures', 'systems']
     def __init__(self):
         super().__init__()
         self._landSize = None  # in sqm
